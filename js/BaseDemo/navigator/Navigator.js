@@ -20,16 +20,16 @@ import {
   createDrawerNavigator,
   DrawerNavigatorItems,
 } from 'react-navigation-drawer';
-import NavigateApp from './NavigateApp';
-import FlatListDemo from './FlatListDemo';
+import NavigateApp from '../NavigateApp';
+import FlatListDemo from '../FlatListDemo';
 import {ScrollView} from 'react-native-gesture-handler';
-import SectionListDemo from './SectionListDemo';
-import IconDemo from './IconDemo';
-import NavigateDemo from './NavigateDemo';
-import Login from './Login';
+import SectionListDemo from '../SectionListDemo';
+import IconDemo from '../IconDemo';
+import NavigateDemo from '../NavigateDemo';
+import Login from '../Login';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DrawNavigateDemo from './DrawNavigateDemo';
-import DrawNavigateDemo2 from './DrawNavigateDemo2';
+import DrawNavigateDemo from '../DrawNavigateDemo';
+import DrawNavigateDemo2 from '../DrawNavigateDemo2';
 
 /**
  * 底部 Tabbar 导航

@@ -5,18 +5,17 @@
  * @Description:
  */
 import React, {useState, useEffect} from 'react';
-import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import PopularPage from '../pages/PopularPage';
-import TrendingPage from '../pages/TrendingPage';
-import FavoritePage from '../pages/FavoritePage';
-import MyPage from '../pages/MyPage';
+import TrendingPage from '../TrendingPage';
+import FavoritePage from '../FavoritePage';
+import MyPage from '../MyPage';
+import PopularTopTabNavigator from './PopularTopTabNavigator';
 
 const tabPages = {
   PopularPage: {
-    screen: PopularPage,
+    screen: PopularTopTabNavigator,
     navigationOptions: {
       tabBarLabel: '最热',
       tabBarIcon: ({tintColor, focused}) => (
@@ -85,12 +84,10 @@ const TabBarComponent = (props) => {
   );
 };
 
-const BottomTabNavigator = createAppContainer(
-  createBottomTabNavigator(tabPages, {
-    tabBarComponent: (props) => {
-      return <TabBarComponent {...props} />;
-    },
-  }),
-);
+const HomeBottomTabNavigator = createBottomTabNavigator(tabPages, {
+  tabBarComponent: (props) => {
+    return <TabBarComponent {...props} />;
+  },
+});
 
-export default BottomTabNavigator;
+export default HomeBottomTabNavigator;

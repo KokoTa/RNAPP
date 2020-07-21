@@ -6,7 +6,7 @@
  */
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import NavigationUtil from '../navigator/NavigationUtil';
+import NavigationUtil from './navigator/NavigationUtil';
 
 export default function WelcomePage(props) {
   const [timer, setTimer] = useState(null);

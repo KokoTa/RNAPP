@@ -5,7 +5,7 @@
  * @Description:
  */
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Button} from 'react-native';
 import {DrawerActions} from 'react-navigation-drawer';
 
 export default function TestPage(props) {
