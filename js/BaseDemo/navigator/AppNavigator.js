@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-07-17 09:53:33
- * @LastEditTime: 2020-07-17 09:58:22
+ * @LastEditTime: 2020-08-05 17:03:57
  * @Description: 导航配置
  */
 import React from 'react';
@@ -138,8 +138,7 @@ const AppDrawerNavigator = createDrawerNavigator(
     // 自定义侧边栏
     contentComponent: (props) => (
       <ScrollView style={{backgroundColor: '#098', flex: 1}}>
-        {/* top: 'always' 强制填充顶部(IOS) */}
-        <SafeAreaView forceInset={{top: 'always'}}>
+        <SafeAreaView>
           <DrawerNavigatorItems {...props} />
         </SafeAreaView>
       </ScrollView>

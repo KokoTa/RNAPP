@@ -1,12 +1,11 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-07-17 09:59:15
- * @LastEditTime: 2020-07-17 16:06:15
+ * @LastEditTime: 2020-08-05 17:21:18
  * @Description:
  */
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import NavigationUtil from './navigator/NavigationUtil';
 
 export default function WelcomePage(props) {
   const [timer, setTimer] = useState(null);
@@ -14,7 +13,8 @@ export default function WelcomePage(props) {
   useEffect(() => {
     setTimer(
       setTimeout(() => {
-        NavigationUtil.resetToHomePage(props);
+        const {navigation} = props;
+        navigation.navigate('HomePage');
       }, 3000),
     );
   }, [props]);

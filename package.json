@@ -11,6 +11,7 @@
     "link": "react-native link react-native-vector-icons"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "react": "16.13.1",
     "react-native": "0.63.1",
