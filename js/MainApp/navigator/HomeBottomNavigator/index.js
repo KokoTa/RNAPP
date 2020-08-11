@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:19:04
- * @LastEditTime: 2020-08-11 12:18:57
+ * @LastEditTime: 2020-08-11 13:59:20
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/HomeBottomNavigator/index.js
