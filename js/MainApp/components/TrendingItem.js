@@ -1,10 +1,10 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-12 19:06:48
+ * @LastEditTime: 2020-08-12 19:06:31
  * @LastEditors: KokoTa
  * @Description:
- * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
+ * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
  */
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
@@ -18,7 +18,7 @@ function FavoriteIcon() {
   );
 }
 
-export default function PopularItem(props) {
+export default function TrendingItem(props) {
   const {item, onSelect} = props;
   if (!item) {
     return null;
@@ -27,21 +27,22 @@ export default function PopularItem(props) {
   return (
     <TouchableOpacity onPress={onSelect}>
       <View style={styles.container}>
-        <Text style={styles.title}>{item.full_name}</Text>
+        <Text style={styles.title}>{item.fullName}</Text>
         <Text style={styles.description}>{item.description}</Text>
         <View style={styles.row}>
           <View style={styles.row}>
             <Text>Author:</Text>
-            <Image
-              style={{height: 22, width: 22, marginLeft: 5}}
-              source={{
-                uri: item.owner.avatar_url,
-              }}
-            />
+            {item.contributors.map((uri) => (
+              <Image
+                style={{height: 22, width: 22, marginLeft: 5}}
+                source={{uri}}
+                key={uri}
+              />
+            ))}
           </View>
           <View style={styles.row}>
             <Text>Star:</Text>
-            <Text>{item.stargazers_count}</Text>
+            <Text>{item.starCount}</Text>
           </View>
           {FavoriteIcon()}
         </View>

@@ -1,12 +1,12 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-12 14:37:29
+ * @LastEditTime: 2020-08-12 17:55:13
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
  */
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PopularPage from '../page/PopularPage';
 import NavigationBar from '../components/NavigationBar';
 import {createAppContainer} from 'react-navigation';

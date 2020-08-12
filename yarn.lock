@@ -1324,6 +1324,11 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+GitHubTrending@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/GitHubTrending/download/GitHubTrending-5.0.0.tgz#d272acf5b134dc0dab24a8877577223462054809"
+  integrity sha1-0nKs9bE03A2rJKiHdXciNGIFSAk=
+
 abab@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"

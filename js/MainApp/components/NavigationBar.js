@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 10:01:57
- * @LastEditTime: 2020-08-12 14:36:08
+ * @LastEditTime: 2020-08-12 15:03:37
  * @LastEditors: KokoTa
  * @Description: 自定义导航栏
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationBar.js
@@ -65,7 +65,7 @@ export default function NavigationBar(props) {
 
 const styles = StyleSheet.create({
   statusBar: {
-    height: getStatusBarHeight(),
+    height: getStatusBarHeight(true), // 传入 true 表示 Android 不需要获取高度，具体看包文档
   },
   title: {
     fontSize: 20,

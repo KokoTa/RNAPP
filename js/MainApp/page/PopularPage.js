@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-12 14:05:03
+ * @LastEditTime: 2020-08-12 19:15:19
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -80,7 +80,7 @@ const PopularPage = (props) => {
           onRefresh={() => loadData(storeName, defaultPageSize)}
         />
       }
-      onEndReachedThreshold={0}
+      onEndReachedThreshold={0.2}
       onEndReached={() =>
         loadMore(
           storeName,

@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-11 17:12:27
+ * @LastEditTime: 2020-08-12 15:31:47
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -13,6 +13,9 @@ const Type = {
   POPULAR_LOAD_MORE_REFRESH: 'POPULAR_LOAD_MORE_REFRESH',
   POPULAR_LOAD_MORE_FAIL: 'POPULAR_LOAD_MORE_FAIL',
   POPULAR_LOAD_MORE_SUCCESS: 'POPULAR_LOAD_MORE_SUCCESS',
+  TRENDING_REFRESH: 'TRENDING_REFRESH',
+  TRENDING_REFRESH_FAIL: 'TRENDING_REFRESH_FAIL',
+  TRENDING_REFRESH_SUCCESS: 'TRENDING_REFRESH_SUCCESS',
 };
 
 export default Type;

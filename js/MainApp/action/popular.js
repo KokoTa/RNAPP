@@ -4,7 +4,7 @@ import DataStore from '../../utils/DataStore';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:35:53
- * @LastEditTime: 2020-08-12 12:23:59
+ * @LastEditTime: 2020-08-12 15:18:30
  * @LastEditors: KokoTa
  * @Description: 获取最热数据的异步 action
  * @FilePath: /AwesomeProject/js/MainApp/action/popular.js
@@ -23,7 +23,7 @@ export function onLoadPopularData(storeName, url, pageSize) {
     });
 
     try {
-      const data = await DataStore.fetchData(url);
+      const data = await DataStore.fetchData(url, 'hot');
       dispatch({
         type: Type.POPULAR_REFRESH_SUCCESS,
         storeName,

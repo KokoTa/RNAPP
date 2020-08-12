@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-12 12:10:24
+ * @LastEditTime: 2020-08-12 16:11:48
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/AppNavigator.js
@@ -18,7 +18,7 @@ const stackNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: null,
+      headerShown: null,
     },
   },
 );

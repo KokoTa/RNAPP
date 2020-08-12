@@ -1,12 +1,12 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-11 18:50:23
+ * @LastEditTime: 2020-08-12 15:33:07
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/reducer/popularReducer.js
  * @DataSchema:
- * popular: {
+ * const defaultState = {
  *  java: {
  *    isLoading: false,
  *    isLoadingMore: false,
