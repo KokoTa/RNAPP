@@ -1,13 +1,13 @@
-import Type from '../type';
-import DataStore from '../../../utils/DataStore';
+import Type from './type';
+import DataStore from '../../utils/DataStore';
 
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:35:53
- * @LastEditTime: 2020-08-11 19:01:14
+ * @LastEditTime: 2020-08-12 12:23:59
  * @LastEditors: KokoTa
  * @Description: 获取最热数据的异步 action
- * @FilePath: /AwesomeProject/js/MainApp/action/popular/index.js
+ * @FilePath: /AwesomeProject/js/MainApp/action/popular.js
  */
 /**
  * 获取总数据

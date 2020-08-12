@@ -1,10 +1,10 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-11 19:32:14
+ * @LastEditTime: 2020-08-12 14:05:03
  * @LastEditors: KokoTa
  * @Description:
- * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage/index.js
+ * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
  */
 
 import React, {useEffect, useCallback} from 'react';
@@ -16,8 +16,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
-import actions from '../../action';
-import PopularItem from './PopularItem';
+import actions from '../action';
+import PopularItem from '../components/PopularItem';
 import Toast from 'react-native-root-toast';
 
 const defaultPageSize = 10;
@@ -104,6 +104,7 @@ const PopularPage = (props) => {
 
 const mapStateToProps = (state) => ({
   popular: state.popular,
+  theme: state.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({
