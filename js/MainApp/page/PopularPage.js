@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-12 19:15:19
+ * @LastEditTime: 2020-08-13 14:40:15
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -19,6 +19,7 @@ import {connect} from 'react-redux';
 import actions from '../action';
 import PopularItem from '../components/PopularItem';
 import Toast from 'react-native-root-toast';
+import NavigationStore from '../../utils/NavigationStore';
 
 const defaultPageSize = 10;
 
@@ -67,6 +68,10 @@ const PopularPage = (props) => {
           item={params.item}
           onSelect={() => {
             console.log('popular item select');
+            NavigationStore.navigation &&
+              NavigationStore.navigation.navigate('DetailPage', {
+                ...params.item,
+              });
           }}
         />
       )}

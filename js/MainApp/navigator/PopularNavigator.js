@@ -1,68 +1,23 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-12 17:55:13
+ * @LastEditTime: 2020-08-13 14:29:01
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
  */
-import React, {Component, PureComponent} from 'react';
+import React from 'react';
 import PopularPage from '../page/PopularPage';
 import NavigationBar from '../components/NavigationBar';
 import {createAppContainer} from 'react-navigation';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {View} from 'react-native';
 import {connect} from 'react-redux';
+import NavigationStore from '../../utils/NavigationStore';
 const tabList = ['javascript', 'java', 'c++', 'go', 'rust'];
 
 // 自定义导航栏
 const CustomNavigationBar = (props) => {
   const {theme} = props;
-
-  // 自定义导航栏左侧按钮
-  const createLeftButton = (callback) => {
-    return (
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity
-          style={{paddingHorizontal: 12}}
-          onPress={() => {
-            callback;
-          }}>
-          <Ionicons
-            name="ios-arrow-back"
-            size={24}
-            style={{
-              alignItems: 'center',
-              color: 'white',
-            }}
-          />
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  // 自定义导航栏右侧按钮
-  const createRightButton = () => {
-    return (
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity onPress={() => {}}>
-          <View style={{paddingHorizontal: 8}}>
-            <Ionicons
-              name="ios-search"
-              size={24}
-              style={{
-                alignItems: 'center',
-                color: 'white',
-              }}
-            />
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
   return (
     <NavigationBar
       title="最热"
@@ -72,8 +27,6 @@ const CustomNavigationBar = (props) => {
       style={{
         backgroundColor: theme.themeColor,
       }}
-      leftButton={createLeftButton()}
-      rightButton={createRightButton()}
     />
   );
 };
@@ -103,9 +56,14 @@ const PopularNavigator = createAppContainer(
   }),
 );
 
-export default () => (
-  <>
-    <ConnectNavigationBar />
-    <PopularNavigator />
-  </>
-);
+export default (props) => {
+  const {navigation} = props;
+  // 储存第一个 createAppContainer 的 navigation
+  NavigationStore.setNavigation(navigation);
+  return (
+    <>
+      <ConnectNavigationBar />
+      <PopularNavigator />
+    </>
+  );
+};
