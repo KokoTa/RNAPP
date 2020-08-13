@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-12 15:31:47
+ * @LastEditTime: 2020-08-13 11:34:33
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -16,6 +16,8 @@ const Type = {
   TRENDING_REFRESH: 'TRENDING_REFRESH',
   TRENDING_REFRESH_FAIL: 'TRENDING_REFRESH_FAIL',
   TRENDING_REFRESH_SUCCESS: 'TRENDING_REFRESH_SUCCESS',
+
+  DEVICE_EMIT_TIME_SPAN_CHANGE: 'DEVICE_EMIT_TIME_SPAN_CHANGE',
 };
 
 export default Type;
