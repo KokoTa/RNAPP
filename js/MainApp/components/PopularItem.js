@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-14 15:29:59
+ * @LastEditTime: 2020-08-14 16:57:30
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
@@ -39,7 +39,6 @@ function PopularItem(props) {
             <Text>{item.stargazers_count}</Text>
           </View>
           {NavigationComponents.getStarButton(
-            theme,
             item.isFavorite,
             (isFavorite) => {
               // 更新对应项的 storage 状态
@@ -47,6 +46,7 @@ function PopularItem(props) {
               // 更新对应项的 redux 状态
               onChangePopularFavorite(storeName, item, isFavorite);
             },
+            theme.themeColor,
           )}
         </View>
       </View>

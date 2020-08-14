@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-14 14:42:01
+ * @LastEditTime: 2020-08-14 16:58:07
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
@@ -40,7 +40,6 @@ function TrendingItem(props) {
             <Text>{item.starCount}</Text>
           </View>
           {NavigationComponents.getStarButton(
-            theme,
             item.isFavorite,
             (isFavorite) => {
               // 更新对应项的 storage 状态
@@ -48,6 +47,7 @@ function TrendingItem(props) {
               // 更新对应项的 redux 状态
               onChangeTrendingFavorite(item, isFavorite);
             },
+            theme.themeColor,
           )}
         </View>
       </View>

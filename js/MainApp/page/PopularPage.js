@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-14 15:47:28
+ * @LastEditTime: 2020-08-14 16:47:48
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -71,6 +71,7 @@ const PopularPage = (props) => {
             console.log('popular item select');
             NavigationStore.navigation &&
               NavigationStore.navigation.navigate('DetailPage', {
+                storeName,
                 ...params.item,
               });
           }}

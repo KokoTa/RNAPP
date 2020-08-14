@@ -4,7 +4,7 @@ import DataStore from '../../utils/DataStore';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:35:53
- * @LastEditTime: 2020-08-14 15:43:11
+ * @LastEditTime: 2020-08-14 17:36:13
  * @LastEditors: KokoTa
  * @Description: 获取最热数据的异步 action
  * @FilePath: /AwesomeProject/js/MainApp/action/popular.js

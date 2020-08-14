@@ -6,7 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 14:22:01
- * @LastEditTime: 2020-08-14 14:29:45
+ * @LastEditTime: 2020-08-14 17:44:39
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationComponents.js
@@ -34,7 +34,7 @@ export default class NavigationComponents {
       <TouchableOpacity onPress={() => {}}>
         <View style={{paddingHorizontal: 8}}>
           <FontAwesome
-            name="star-o"
+            name="share"
             size={24}
             style={{
               alignItems: 'center',
@@ -47,17 +47,19 @@ export default class NavigationComponents {
   }
   /**
    * 获取收藏按钮
-   * @param {*} props
+   * @param {*} isFavorite 是否收藏
+   * @param {*} toggle 状态切换函数
+   * @param {*} color 图标颜色
    */
-  static getStarButton(theme, isFavorite, toggle) {
+  static getStarButton(isFavorite, toggle, color) {
     return (
       <TouchableOpacity
-        style={{padding: 6}}
+        style={{paddingHorizontal: 8}}
         onPress={() => toggle(!isFavorite)}>
         <FontAwesome
           name={isFavorite ? 'star' : 'star-o'}
           size={26}
-          style={{color: theme.themeColor}}
+          style={{color: color ? color : 'white'}}
         />
       </TouchableOpacity>
     );

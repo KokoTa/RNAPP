@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-08 14:57:29
- * @LastEditTime: 2020-08-14 16:02:13
+ * @LastEditTime: 2020-08-14 16:42:14
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/utils/DataStore.js
@@ -24,7 +24,6 @@ export default class DataStore {
         return item;
       }),
     );
-    console.log(1);
     return {data, timestamp: new Date().getTime()};
   }
 
@@ -51,7 +50,7 @@ export default class DataStore {
       return;
     }
     try {
-      const wrapData = DataStore._wrapData(data, flag);
+      const wrapData = await DataStore._wrapData(data, flag);
       await AsyncStorage.setItem(url, JSON.stringify(wrapData));
       return wrapData;
     } catch (error) {
@@ -64,7 +63,11 @@ export default class DataStore {
       const data = await AsyncStorage.getItem(url);
       const parseData = JSON.parse(data);
       try {
-        return DataStore._wrapData(parseData.data, flag);
+        return (
+          parseData &&
+          parseData.data &&
+          DataStore._wrapData(parseData.data, flag)
+        );
       } catch (error) {
         throw Error(error);
       }

@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-14 15:44:51
+ * @LastEditTime: 2020-08-14 16:43:40
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/reducer/popularReducer.js
@@ -103,12 +103,7 @@ const popularReducer = (state = defaultState, action) => {
           return item;
         },
       );
-      return {
-        ...state,
-        [action.storeName]: {
-          ...state[action.storeName],
-        },
-      };
+      return {...state};
     default:
       return state;
   }
