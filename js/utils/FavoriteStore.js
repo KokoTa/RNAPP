@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 20:30:26
- * @LastEditTime: 2020-08-14 14:17:30
+ * @LastEditTime: 2020-08-14 16:00:52
  * @LastEditors: KokoTa
  * @Description: 收藏工具类：保存的每个项目都有个项目名，项目名保存到收藏集合中，每次新增或删除项目后需要更新收藏集合中的项目名
  * @FilePath: /AwesomeProject/js/utils/FavoriteStore.js
@@ -109,8 +109,7 @@ export class FavoriteStore {
    * @param {*} type
    * @param {*} item
    */
-  static async checkItemInKeys(type, item) {
-    const keys = await this.getKeys(type);
+  static async checkItemInKeys(keys, item) {
     if (keys) {
       const key = item.html_url ? item.html_url : item.url; // 最热为 html_url，趋势为 url
       if (keys.indexOf(key) !== -1) {

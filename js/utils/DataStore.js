@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-08 14:57:29
- * @LastEditTime: 2020-08-14 15:56:19
+ * @LastEditTime: 2020-08-14 16:02:13
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/utils/DataStore.js
@@ -14,16 +14,17 @@ import {FavoriteStore, FAVORITE_HOT, FAVORITE_TRENDING} from './FavoriteStore';
 export default class DataStore {
   static async _wrapData(data, flag) {
     // 获取的数据需要判断是否已经收藏，加上收藏状态
+    const keys = await FavoriteStore.getKeys(
+      flag === 'hot' ? FAVORITE_HOT : FAVORITE_TRENDING,
+    );
     data.items = await Promise.all(
       data.items.map(async (item) => {
-        const isFavorite = await FavoriteStore.checkItemInKeys(
-          flag === 'hot' ? FAVORITE_HOT : FAVORITE_TRENDING,
-          item,
-        );
+        const isFavorite = await FavoriteStore.checkItemInKeys(keys, item);
         item.isFavorite = isFavorite;
         return item;
       }),
     );
+    console.log(1);
     return {data, timestamp: new Date().getTime()};
   }
 
