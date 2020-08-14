@@ -18,7 +18,7 @@ import Type from '../action/type';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-13 11:42:58
+ * @LastEditTime: 2020-08-14 11:53:59
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js

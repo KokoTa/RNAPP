@@ -4,7 +4,7 @@ import DataStore from '../../utils/DataStore';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:35:53
- * @LastEditTime: 2020-08-12 15:18:30
+ * @LastEditTime: 2020-08-14 13:57:04
  * @LastEditors: KokoTa
  * @Description: 获取最热数据的异步 action
  * @FilePath: /AwesomeProject/js/MainApp/action/popular.js
@@ -87,5 +87,22 @@ export function onLoadMorePopularData(
         });
       }, 3000);
     }
+  };
+}
+
+/**
+ * 改变最热收藏状态
+ * @param {*} storeName
+ * @param {*} item
+ * @param {*} isFavorite
+ */
+export function onChangePopularFavorite(storeName, item, isFavorite) {
+  return (dispatch) => {
+    dispatch({
+      type: Type.POPULAR_FAVORITE_CHANGE,
+      storeName,
+      item,
+      isFavorite,
+    });
   };
 }

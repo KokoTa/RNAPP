@@ -6,7 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 14:22:01
- * @LastEditTime: 2020-08-13 15:46:35
+ * @LastEditTime: 2020-08-14 09:50:46
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationComponents.js
@@ -25,6 +25,10 @@ export default class NavigationComponents {
       </TouchableOpacity>
     );
   }
+  /**
+   * 获取分享按钮
+   * @param {*} callback
+   */
   static getShareButton(callback) {
     return (
       <TouchableOpacity onPress={() => {}}>

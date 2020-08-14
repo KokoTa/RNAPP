@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-12 15:33:07
+ * @LastEditTime: 2020-08-14 14:12:09
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/reducer/popularReducer.js
@@ -88,6 +88,25 @@ const popularReducer = (state = defaultState, action) => {
           ...state[action.storeName],
           isLoadingMore: false,
           pageIndex: action.pageIndex,
+        },
+      };
+
+    /**
+     * 改变收藏状态
+     */
+    case Type.POPULAR_FAVORITE_CHANGE:
+      state[action.storeName].items = state[action.storeName].items.map(
+        (item) => {
+          if (item.html_url === action.item.html_url) {
+            item.isFavorite = action.isFavorite;
+          }
+          return item;
+        },
+      );
+      return {
+        ...state,
+        [action.storeName]: {
+          ...state[action.storeName],
         },
       };
     default:

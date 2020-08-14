@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-13 14:40:15
+ * @LastEditTime: 2020-08-14 12:26:09
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -66,6 +66,7 @@ const PopularPage = (props) => {
       renderItem={(params) => (
         <PopularItem
           item={params.item}
+          storeName={storeName}
           onSelect={() => {
             console.log('popular item select');
             NavigationStore.navigation &&

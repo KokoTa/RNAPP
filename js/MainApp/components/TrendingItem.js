@@ -1,25 +1,20 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-12 19:06:31
+ * @LastEditTime: 2020-08-14 14:02:43
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
  */
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import StarItem from './StarItem';
+import {FavoriteStore, FAVORITE_TRENDING} from '../../utils/FavoriteStore';
+import {connect} from 'react-redux';
+import actions from '../action';
 
-function FavoriteIcon() {
-  return (
-    <TouchableOpacity style={{padding: 6}} onPress={() => {}}>
-      <FontAwesome name="star-o" size={26} />
-    </TouchableOpacity>
-  );
-}
-
-export default function TrendingItem(props) {
-  const {item, onSelect} = props;
+function TrendingItem(props) {
+  const {item, onSelect, onChangeTrendingFavorite} = props;
   if (!item) {
     return null;
   }
@@ -44,7 +39,15 @@ export default function TrendingItem(props) {
             <Text>Star:</Text>
             <Text>{item.starCount}</Text>
           </View>
-          {FavoriteIcon()}
+          <StarItem
+            isFavorite={item.isFavorite}
+            toggle={(isFavorite) => {
+              // 更新对应项的 storage 状态
+              FavoriteStore.toggleItems(FAVORITE_TRENDING, item, isFavorite);
+              // 更新对应项的 redux 状态
+              onChangeTrendingFavorite(item, isFavorite);
+            }}
+          />
         </View>
       </View>
     </TouchableOpacity>
@@ -85,3 +88,12 @@ const styles = StyleSheet.create({
     color: '#757575',
   },
 });
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  onChangeTrendingFavorite: (item, isFavorite) =>
+    dispatch(actions.onChangeTrendingFavorite(item, isFavorite)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrendingItem);
