@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-08 14:57:29
- * @LastEditTime: 2020-08-14 14:22:36
+ * @LastEditTime: 2020-08-14 15:56:19
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/utils/DataStore.js
@@ -12,15 +12,18 @@ import GithubTrending from 'GitHubTrending';
 import {FavoriteStore, FAVORITE_HOT, FAVORITE_TRENDING} from './FavoriteStore';
 
 export default class DataStore {
-  static _wrapData(data, flag) {
+  static async _wrapData(data, flag) {
     // 获取的数据需要判断是否已经收藏，加上收藏状态
-    data.items.forEach(async (item) => {
-      const isFavorite = await FavoriteStore.checkItemInKeys(
-        flag === 'hot' ? FAVORITE_HOT : FAVORITE_TRENDING,
-        item,
-      );
-      item.isFavorite = isFavorite;
-    });
+    data.items = await Promise.all(
+      data.items.map(async (item) => {
+        const isFavorite = await FavoriteStore.checkItemInKeys(
+          flag === 'hot' ? FAVORITE_HOT : FAVORITE_TRENDING,
+          item,
+        );
+        item.isFavorite = isFavorite;
+        return item;
+      }),
+    );
     return {data, timestamp: new Date().getTime()};
   }
 
@@ -55,11 +58,12 @@ export default class DataStore {
     }
   }
 
-  static async fetchLocalData(url) {
+  static async fetchLocalData(url, flag) {
     try {
       const data = await AsyncStorage.getItem(url);
+      const parseData = JSON.parse(data);
       try {
-        return JSON.parse(data);
+        return DataStore._wrapData(parseData.data, flag);
       } catch (error) {
         throw Error(error);
       }
@@ -101,16 +105,16 @@ export default class DataStore {
    * @param {*} flag 最热或趋势
    */
   static async fetchData(url, flag) {
-    // const wrapData = await DataStore.fetchLocalData(url);
+    const wrapData = await DataStore.fetchLocalData(url, flag);
     // 四个小时内的数据直接使用缓存
-    // if (wrapData && DataStore._checkTimeValid(wrapData.timestamp)) {
-    //   return wrapData;
-    // } else {
-    // 超过四个小时就使用服务端数据
-    const remoteData = await DataStore.fetchRemoteData(url, flag);
-    const data = await DataStore.saveData(url, remoteData, flag);
-    return data;
-    // }
+    if (wrapData && DataStore._checkTimeValid(wrapData.timestamp)) {
+      return wrapData;
+    } else {
+      // 超过四个小时就使用服务端数据
+      const remoteData = await DataStore.fetchRemoteData(url, flag);
+      const data = await DataStore.saveData(url, remoteData, flag);
+      return data;
+    }
   }
 
   static async clearData(url) {

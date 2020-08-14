@@ -1,20 +1,20 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-14 14:02:43
+ * @LastEditTime: 2020-08-14 14:42:01
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
  */
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import StarItem from './StarItem';
 import {FavoriteStore, FAVORITE_TRENDING} from '../../utils/FavoriteStore';
 import {connect} from 'react-redux';
 import actions from '../action';
+import NavigationComponents from './NavigationComponents';
 
 function TrendingItem(props) {
-  const {item, onSelect, onChangeTrendingFavorite} = props;
+  const {theme, item, onSelect, onChangeTrendingFavorite} = props;
   if (!item) {
     return null;
   }
@@ -39,15 +39,16 @@ function TrendingItem(props) {
             <Text>Star:</Text>
             <Text>{item.starCount}</Text>
           </View>
-          <StarItem
-            isFavorite={item.isFavorite}
-            toggle={(isFavorite) => {
+          {NavigationComponents.getStarButton(
+            theme,
+            item.isFavorite,
+            (isFavorite) => {
               // 更新对应项的 storage 状态
               FavoriteStore.toggleItems(FAVORITE_TRENDING, item, isFavorite);
               // 更新对应项的 redux 状态
               onChangeTrendingFavorite(item, isFavorite);
-            }}
-          />
+            },
+          )}
         </View>
       </View>
     </TouchableOpacity>
@@ -89,7 +90,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  theme: state.theme,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeTrendingFavorite: (item, isFavorite) =>

@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-14 12:26:09
+ * @LastEditTime: 2020-08-14 15:47:28
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -76,7 +76,7 @@ const PopularPage = (props) => {
           }}
         />
       )}
-      keyExtractor={(params) => params.id + ''}
+      keyExtractor={(params) => params.id + Math.random() + ''}
       refreshControl={
         <RefreshControl
           title="Loading"
