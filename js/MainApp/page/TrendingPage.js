@@ -18,7 +18,7 @@ import Type from '../action/type';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-14 11:53:59
+ * @LastEditTime: 2020-08-15 11:38:37
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js
@@ -30,7 +30,6 @@ function TrendingPage(props) {
 
   const loadTotalData = useCallback(
     async (url) => {
-      console.log(url);
       await onLoadTrendingData(url);
     },
     [onLoadTrendingData],

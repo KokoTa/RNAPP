@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 11:53:09
- * @LastEditTime: 2020-08-14 17:41:04
+ * @LastEditTime: 2020-08-15 14:10:03
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/DetailPage.js
@@ -12,7 +12,7 @@ import {WebView} from 'react-native-webview';
 import NavigationBar from '../components/NavigationBar';
 import NavigationComponents from '../components/NavigationComponents';
 import useHandleBack from '../hook/useHandleBack';
-import {FavoriteStore, FAVORITE_HOT} from '../../utils/FavoriteStore';
+import {FavoriteStore} from '../../utils/FavoriteStore';
 import {View} from 'react-native';
 import action from '../action';
 
@@ -62,10 +62,14 @@ function DetailPage(props) {
             {NavigationComponents.getStarButton(
               item.isFavorite,
               (isFavorite) => {
-                // 更新对应项的 storage 状态
-                FavoriteStore.toggleItems(FAVORITE_HOT, item, isFavorite);
                 // 更新对应项的 redux 状态
                 onChangePopularFavorite(storeName, item, isFavorite);
+                // 更新对应项的 storage 状态
+                FavoriteStore.toggleItems(
+                  FavoriteStore.FAVORITE_HOT,
+                  item,
+                  isFavorite,
+                );
               },
             )}
             {NavigationComponents.getShareButton()}

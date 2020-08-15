@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:19:04
- * @LastEditTime: 2020-08-12 16:01:48
+ * @LastEditTime: 2020-08-15 11:10:58
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/HomeBottomNavigator.js
@@ -11,7 +11,9 @@ const {createBottomTabNavigator} = require('react-navigation-tabs');
 import PopularNavigator from './PopularNavigator';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import TrendingPage from '../page/TrendingPage';
+import FavoriteNavigator from './FavoriteNavigator';
 
 const HomeBottomNavigator = createBottomTabNavigator({
   PopularPage: {
@@ -27,6 +29,14 @@ const HomeBottomNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({tintColor}) => {
         return <Ionicons name="trending-up" size={26} color={tintColor} />;
+      },
+    },
+  },
+  FavoritePage: {
+    screen: FavoriteNavigator,
+    navigationOptions: {
+      tabBarIcon: ({tintColor}) => {
+        return <MaterialIcons name="favorite" size={26} color={tintColor} />;
       },
     },
   },

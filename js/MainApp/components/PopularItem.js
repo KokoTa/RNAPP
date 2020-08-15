@@ -1,14 +1,14 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-14 16:57:30
+ * @LastEditTime: 2020-08-15 14:18:26
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
  */
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {FAVORITE_HOT, FavoriteStore} from '../../utils/FavoriteStore';
+import {FavoriteStore} from '../../utils/FavoriteStore';
 import {connect} from 'react-redux';
 import actions from '../action';
 import NavigationComponents from './NavigationComponents';
@@ -41,10 +41,15 @@ function PopularItem(props) {
           {NavigationComponents.getStarButton(
             item.isFavorite,
             (isFavorite) => {
-              // 更新对应项的 storage 状态
-              FavoriteStore.toggleItems(FAVORITE_HOT, item, isFavorite);
+              // PS: 这里注意要先更新 redux，再更新 storage，因为我们要存储状态改变后的 item，redux 更新改变了 item 的状态
               // 更新对应项的 redux 状态
               onChangePopularFavorite(storeName, item, isFavorite);
+              // 更新对应项的 storage 状态
+              FavoriteStore.toggleItems(
+                FavoriteStore.FAVORITE_HOT,
+                item,
+                isFavorite,
+              );
             },
             theme.themeColor,
           )}

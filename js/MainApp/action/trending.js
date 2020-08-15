@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:48:18
- * @LastEditTime: 2020-08-14 14:03:41
+ * @LastEditTime: 2020-08-15 13:59:59
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/trending.js
@@ -15,7 +15,7 @@ export function onLoadTrendingData(url) {
       type: Type.TRENDING_REFRESH,
     });
     try {
-      const response = await DataStore.fetchData(url, 'trending');
+      const response = await DataStore.fetchData(url, DataStore.DATA_TRENDING);
       dispatch({
         type: Type.TRENDING_REFRESH_SUCCESS,
         items: response.data.items,

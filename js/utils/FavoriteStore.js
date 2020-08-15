@@ -1,18 +1,17 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 20:30:26
- * @LastEditTime: 2020-08-14 16:00:52
+ * @LastEditTime: 2020-08-15 14:07:48
  * @LastEditors: KokoTa
  * @Description: 收藏工具类：保存的每个项目都有个项目名，项目名保存到收藏集合中，每次新增或删除项目后需要更新收藏集合中的项目名
  * @FilePath: /AwesomeProject/js/utils/FavoriteStore.js
  */
 import AsyncStorage from '@react-native-community/async-storage';
 
-// 项目名集合类型
-export const FAVORITE_HOT = 'FAVORITE_HOT';
-export const FAVORITE_TRENDING = 'FAVORITE_TRENDING';
-
 export class FavoriteStore {
+  static FAVORITE_HOT = 'FAVORITE_HOT';
+  static FAVORITE_TRENDING = 'FAVORITE_TRENDING';
+
   /**
    * 保存收藏的项目
    * @param {String} type 集合类型
@@ -92,9 +91,8 @@ export class FavoriteStore {
       const keys = await this.getKeys(type);
       if (keys) {
         const itemArrays = await AsyncStorage.multiGet(keys);
-        const items = itemArrays.map((itemArray, index) => {
-          // const key = itemArray[index][0];
-          const value = itemArray[index][1];
+        const items = itemArrays.map((itemArray) => {
+          const value = itemArray[1];
           return JSON.parse(value);
         });
         return items;

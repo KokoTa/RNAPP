@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-08 14:57:29
- * @LastEditTime: 2020-08-14 16:42:14
+ * @LastEditTime: 2020-08-15 14:02:41
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/utils/DataStore.js
@@ -9,13 +9,18 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
 import GithubTrending from 'GitHubTrending';
-import {FavoriteStore, FAVORITE_HOT, FAVORITE_TRENDING} from './FavoriteStore';
+import {FavoriteStore} from './FavoriteStore';
 
 export default class DataStore {
+  static DATA_HOT = 'DATA_HOT';
+  static DATA_TRENDING = 'DATA_TRENDING';
+
   static async _wrapData(data, flag) {
     // 获取的数据需要判断是否已经收藏，加上收藏状态
     const keys = await FavoriteStore.getKeys(
-      flag === 'hot' ? FAVORITE_HOT : FAVORITE_TRENDING,
+      flag === this.DATA_HOT
+        ? FavoriteStore.FAVORITE_HOT
+        : FavoriteStore.FAVORITE_TRENDING,
     );
     data.items = await Promise.all(
       data.items.map(async (item) => {
@@ -77,7 +82,7 @@ export default class DataStore {
   }
 
   static async fetchRemoteData(url, flag) {
-    if (flag === 'hot') {
+    if (flag === this.DATA_HOT) {
       try {
         const response = await fetch(url);
         if (response.ok) {
@@ -88,7 +93,7 @@ export default class DataStore {
         throw Error(error);
       }
     }
-    if (flag === 'trending') {
+    if (flag === this.DATA_TRENDING) {
       try {
         const response = await new GithubTrending(
           'fd82d1e882462e23b8e88aa82198f166',
