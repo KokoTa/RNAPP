@@ -1,20 +1,35 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-15 14:18:26
+ * @LastEditTime: 2020-08-15 15:42:45
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
  */
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  DeviceEventEmitter,
+} from 'react-native';
 import {FavoriteStore} from '../../utils/FavoriteStore';
 import {connect} from 'react-redux';
 import actions from '../action';
 import NavigationComponents from './NavigationComponents';
+import Type from '../action/type';
 
 function PopularItem(props) {
-  const {theme, item, storeName, onSelect, onChangePopularFavorite} = props;
+  const {
+    theme,
+    item,
+    storeName,
+    onSelect,
+    onChangePopularFavorite,
+    isFavoritePage,
+  } = props;
   if (!item) {
     return null;
   }
@@ -40,16 +55,28 @@ function PopularItem(props) {
           </View>
           {NavigationComponents.getStarButton(
             item.isFavorite,
-            (isFavorite) => {
-              // PS: 这里注意要先更新 redux，再更新 storage，因为我们要存储状态改变后的 item，redux 更新改变了 item 的状态
-              // 更新对应项的 redux 状态
-              onChangePopularFavorite(storeName, item, isFavorite);
-              // 更新对应项的 storage 状态
-              FavoriteStore.toggleItems(
-                FavoriteStore.FAVORITE_HOT,
-                item,
-                isFavorite,
-              );
+            async (isFavorite) => {
+              // 改组件是否用在了收藏页
+              if (!isFavoritePage) {
+                // PS: 这里注意要先更新 redux，再更新 storage，因为我们要存储状态改变后的 item，redux 更新改变了 item 的状态
+                // 更新对应项的 redux 状态
+                onChangePopularFavorite(storeName, item, isFavorite);
+                // 更新对应项的 storage 状态
+                await FavoriteStore.toggleItems(
+                  FavoriteStore.FAVORITE_HOT,
+                  item,
+                  isFavorite,
+                );
+              } else {
+                // 更新对应项的 storage 状态
+                await FavoriteStore.toggleItems(
+                  FavoriteStore.FAVORITE_HOT,
+                  item,
+                  isFavorite,
+                );
+                // 发布事件，触发多个地方的数据更新
+                DeviceEventEmitter.emit(Type.FAVORITE_FAVORITE_CHANGE);
+              }
             },
             theme.themeColor,
           )}

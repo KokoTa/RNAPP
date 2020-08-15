@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-15 11:14:33
+ * @LastEditTime: 2020-08-15 15:46:16
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -26,6 +26,8 @@ const Type = {
   FAVORITE_LOAD: 'FAVORITE_LOAD',
   FAVORITE_LOAD_SUCCESS: 'FAVORITE_LOAD_SUCCESS',
   FAVORITE_LOAD_FAIL: 'FAVORITE_LOAD_FAIL',
+  FAVORITE_FAVORITE_CHANGE: 'FAVORITE_FAVORITE_CHANGE',
+  FAVORITE_DATA_REFRESH: 'FAVORITE_DATA_REFRESH',
 };
 
 export default Type;

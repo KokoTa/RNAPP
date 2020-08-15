@@ -1,18 +1,19 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-15 11:01:44
- * @LastEditTime: 2020-08-15 14:18:55
+ * @LastEditTime: 2020-08-15 15:47:26
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/FavoritePage.js
  */
 import React, {useEffect, useCallback} from 'react';
-import {FlatList, RefreshControl} from 'react-native';
+import {FlatList, RefreshControl, DeviceEventEmitter} from 'react-native';
 import {connect} from 'react-redux';
 import actions from '../action';
 import PopularItem from '../components/PopularItem';
 import TrendingItem from '../components/TrendingItem';
 import {FavoriteStore} from '../../utils/FavoriteStore';
+import Type from '../action/type';
 
 function FavoritePage(props) {
   const {favorite, onLoadFavoriteData, storeName} = props;
@@ -25,6 +26,26 @@ function FavoritePage(props) {
     fetchData();
   }, [fetchData]);
 
+  // 当收藏项更新时会触发
+  useEffect(() => {
+    DeviceEventEmitter.addListener(Type.FAVORITE_FAVORITE_CHANGE, () => {
+      fetchData();
+    });
+    return () => {
+      DeviceEventEmitter.removeListener(Type.FAVORITE_FAVORITE_CHANGE);
+    };
+  }, [fetchData]);
+
+  // 当跳转到收藏页时会触发
+  useEffect(() => {
+    DeviceEventEmitter.addListener(Type.FAVORITE_DATA_REFRESH, () => {
+      fetchData();
+    });
+    return () => {
+      DeviceEventEmitter.removeListener(Type.FAVORITE_DATA_REFRESH);
+    };
+  }, [fetchData]);
+
   return (
     <FlatList
       data={favorite[storeName].items}
@@ -32,15 +53,17 @@ function FavoritePage(props) {
         storeName === FavoriteStore.FAVORITE_HOT ? (
           <PopularItem
             item={params.item}
+            isFavoritePage={true}
             onSelect={() => {
-              console.log('popular item select');
+              console.log('favorite item select');
             }}
           />
         ) : (
           <TrendingItem
             item={params.item}
+            isFavoritePage={true}
             onSelect={() => {
-              console.log('trending item select');
+              console.log('favorite item select');
             }}
           />
         )

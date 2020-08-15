@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 11:53:09
- * @LastEditTime: 2020-08-15 14:10:03
+ * @LastEditTime: 2020-08-15 15:30:28
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/DetailPage.js
@@ -61,11 +61,11 @@ function DetailPage(props) {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {NavigationComponents.getStarButton(
               item.isFavorite,
-              (isFavorite) => {
+              async (isFavorite) => {
                 // 更新对应项的 redux 状态
                 onChangePopularFavorite(storeName, item, isFavorite);
                 // 更新对应项的 storage 状态
-                FavoriteStore.toggleItems(
+                await FavoriteStore.toggleItems(
                   FavoriteStore.FAVORITE_HOT,
                   item,
                   isFavorite,

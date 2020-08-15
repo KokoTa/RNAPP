@@ -18,7 +18,7 @@ import Type from '../action/type';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-15 11:38:37
+ * @LastEditTime: 2020-08-15 15:37:08
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js
@@ -37,6 +37,10 @@ function TrendingPage(props) {
 
   useEffect(() => {
     loadTotalData('https://github.com/trending');
+  }, [loadTotalData]);
+
+  // 改变日期这里会监听到
+  useEffect(() => {
     DeviceEventEmitter.addListener(
       Type.DEVICE_EMIT_TIME_SPAN_CHANGE,
       (span) => {
@@ -49,6 +53,16 @@ function TrendingPage(props) {
     );
     return () => {
       DeviceEventEmitter.removeListener(Type.DEVICE_EMIT_TIME_SPAN_CHANGE);
+    };
+  }, [loadTotalData]);
+
+  // 收藏页状态改变后这里会监听到
+  useEffect(() => {
+    DeviceEventEmitter.addListener(Type.FAVORITE_FAVORITE_CHANGE, () => {
+      loadTotalData('https://github.com/trending');
+    });
+    return () => {
+      DeviceEventEmitter.removeListener(Type.FAVORITE_FAVORITE_CHANGE);
     };
   }, [loadTotalData]);
 
