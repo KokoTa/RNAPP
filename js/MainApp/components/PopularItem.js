@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-15 18:00:14
+ * @LastEditTime: 2020-08-17 09:45:46
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
@@ -54,6 +54,7 @@ function PopularItem(props) {
               if (!isFavoritePage) {
                 // PS: 这里注意要先更新 redux，再更新 storage，因为我们要存储状态改变后的 item，redux 更新改变了 item 的状态
                 // 更新对应项的 redux 状态
+                item.storeName = storeName; // 这里设置项所属的分类，用于新能优化
                 onChangePopularFavorite(storeName, item, isFavorite);
                 // 更新对应项的 storage 状态
                 await FavoriteStore.toggleItems(
@@ -69,7 +70,10 @@ function PopularItem(props) {
                   isFavorite,
                 );
                 // 发布事件，触发多个地方的数据更新
-                EventBus.getInstance().fireEvent(Type.FAVORITE_FAVORITE_CHANGE);
+                EventBus.getInstance().fireEvent(
+                  Type.FAVORITE_FAVORITE_CHANGE,
+                  item,
+                );
               }
             },
             theme.themeColor,

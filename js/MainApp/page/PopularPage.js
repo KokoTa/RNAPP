@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-17 09:12:53
+ * @LastEditTime: 2020-08-17 09:50:49
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -64,8 +64,11 @@ const PopularPage = (props) => {
 
   // 收藏页状态改变后这里会监听到
   useEffect(() => {
-    const fetchData = () => {
-      loadData(storeName, defaultPageSize, store.isLoading);
+    const fetchData = (item) => {
+      // 性能优化，只更新项对应分类页面的数据
+      if (item.storeName === storeName) {
+        loadData(storeName, defaultPageSize, store.isLoading);
+      }
     };
     EventBus.getInstance().addListener(
       Type.FAVORITE_FAVORITE_CHANGE,
