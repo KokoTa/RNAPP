@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-15 15:42:10
+ * @LastEditTime: 2020-08-15 17:49:24
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
@@ -20,6 +20,7 @@ import {connect} from 'react-redux';
 import actions from '../action';
 import NavigationComponents from './NavigationComponents';
 import Type from '../action/type';
+import EventBus from '../../utils/EventBus';
 
 function TrendingItem(props) {
   const {
@@ -68,12 +69,12 @@ function TrendingItem(props) {
               } else {
                 // 更新对应项的 storage 状态
                 await FavoriteStore.toggleItems(
-                  FavoriteStore.FAVORITE_HOT,
+                  FavoriteStore.FAVORITE_TRENDING,
                   item,
                   isFavorite,
                 );
                 // 发布事件，触发多个地方的数据更新
-                DeviceEventEmitter.emit(Type.FAVORITE_FAVORITE_CHANGE);
+                EventBus.getInstance().fireEvent(Type.FAVORITE_TRENDING_CHANGE);
               }
             },
             theme.themeColor,

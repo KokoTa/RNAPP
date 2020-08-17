@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useEffect, useCallback, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import {
   RefreshControl,
@@ -14,11 +14,12 @@ import TrendingItem from '../components/TrendingItem';
 import NavigationBar from '../components/NavigationBar';
 import TrendingDialog from '../components/TrendingDialog';
 import Type from '../action/type';
+import EventBus from '../../utils/EventBus';
 
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-15 15:37:08
+ * @LastEditTime: 2020-08-15 17:47:02
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js
@@ -28,15 +29,15 @@ function TrendingPage(props) {
   const [visible, setVisible] = useState(false);
   const [timeSpan, setTimeSpan] = useState('');
 
-  const loadTotalData = useCallback(
-    async (url) => {
-      await onLoadTrendingData(url);
-    },
-    [onLoadTrendingData],
-  );
+  const loadTotalData = useCallback(async () => {
+    await onLoadTrendingData(
+      'https://github.com/trending' +
+        (timeSpan.searchText ? `?${timeSpan.searchText}` : ''),
+    );
+  }, [onLoadTrendingData, timeSpan]);
 
   useEffect(() => {
-    loadTotalData('https://github.com/trending');
+    loadTotalData();
   }, [loadTotalData]);
 
   // 改变日期这里会监听到
@@ -44,25 +45,23 @@ function TrendingPage(props) {
     DeviceEventEmitter.addListener(
       Type.DEVICE_EMIT_TIME_SPAN_CHANGE,
       (span) => {
-        loadTotalData(
-          'https://github.com/trending' +
-            (span.searchText ? `?${span.searchText}` : ''),
-        );
         setTimeSpan(span);
+        loadTotalData();
       },
     );
-    return () => {
-      DeviceEventEmitter.removeListener(Type.DEVICE_EMIT_TIME_SPAN_CHANGE);
-    };
   }, [loadTotalData]);
 
   // 收藏页状态改变后这里会监听到
   useEffect(() => {
-    DeviceEventEmitter.addListener(Type.FAVORITE_FAVORITE_CHANGE, () => {
-      loadTotalData('https://github.com/trending');
-    });
+    const fetchData = () => {
+      loadTotalData();
+    };
+    EventBus.getInstance().addListener(
+      Type.FAVORITE_TRENDING_CHANGE,
+      fetchData,
+    );
     return () => {
-      DeviceEventEmitter.removeListener(Type.FAVORITE_FAVORITE_CHANGE);
+      EventBus.getInstance().removeListener(fetchData);
     };
   }, [loadTotalData]);
 
@@ -116,7 +115,7 @@ function TrendingPage(props) {
             titleColor="red"
             tintColor="orange"
             refreshing={trending.isLoading}
-            onRefresh={() => loadTotalData('https://github.com/trending')}
+            onRefresh={() => loadTotalData()}
           />
         }
       />

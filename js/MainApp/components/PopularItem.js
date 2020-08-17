@@ -1,25 +1,19 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-15 15:42:45
+ * @LastEditTime: 2020-08-15 18:00:14
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/PopularItem.js
  */
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  DeviceEventEmitter,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {FavoriteStore} from '../../utils/FavoriteStore';
 import {connect} from 'react-redux';
 import actions from '../action';
 import NavigationComponents from './NavigationComponents';
 import Type from '../action/type';
+import EventBus from '../../utils/EventBus';
 
 function PopularItem(props) {
   const {
@@ -75,7 +69,7 @@ function PopularItem(props) {
                   isFavorite,
                 );
                 // 发布事件，触发多个地方的数据更新
-                DeviceEventEmitter.emit(Type.FAVORITE_FAVORITE_CHANGE);
+                EventBus.getInstance().fireEvent(Type.FAVORITE_FAVORITE_CHANGE);
               }
             },
             theme.themeColor,

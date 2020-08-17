@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 19:14:15
- * @LastEditTime: 2020-08-15 15:37:17
+ * @LastEditTime: 2020-08-17 09:12:53
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/PopularPage.js
@@ -14,7 +14,6 @@ import {
   View,
   Text,
   ActivityIndicator,
-  DeviceEventEmitter,
 } from 'react-native';
 import {connect} from 'react-redux';
 import actions from '../action';
@@ -22,6 +21,7 @@ import PopularItem from '../components/PopularItem';
 import Toast from 'react-native-root-toast';
 import NavigationStore from '../../utils/NavigationStore';
 import Type from '../action/type';
+import EventBus from '../../utils/EventBus';
 
 const defaultPageSize = 10;
 
@@ -64,13 +64,17 @@ const PopularPage = (props) => {
 
   // 收藏页状态改变后这里会监听到
   useEffect(() => {
-    DeviceEventEmitter.addListener(Type.FAVORITE_FAVORITE_CHANGE, () => {
-      loadData(storeName, defaultPageSize);
-    });
-    return () => {
-      DeviceEventEmitter.removeListener(Type.FAVORITE_FAVORITE_CHANGE);
+    const fetchData = () => {
+      loadData(storeName, defaultPageSize, store.isLoading);
     };
-  }, [loadData, storeName]);
+    EventBus.getInstance().addListener(
+      Type.FAVORITE_FAVORITE_CHANGE,
+      fetchData,
+    );
+    return () => {
+      EventBus.getInstance().removeListener(fetchData);
+    };
+  }, [loadData, storeName, store.isLoading]);
 
   return (
     <FlatList

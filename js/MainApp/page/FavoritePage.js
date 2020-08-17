@@ -1,22 +1,25 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-15 11:01:44
- * @LastEditTime: 2020-08-15 15:47:26
+ * @LastEditTime: 2020-08-17 09:09:16
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/FavoritePage.js
  */
 import React, {useEffect, useCallback} from 'react';
-import {FlatList, RefreshControl, DeviceEventEmitter} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 import {connect} from 'react-redux';
 import actions from '../action';
 import PopularItem from '../components/PopularItem';
 import TrendingItem from '../components/TrendingItem';
 import {FavoriteStore} from '../../utils/FavoriteStore';
 import Type from '../action/type';
+import EventBus from '../../utils/EventBus';
 
 function FavoritePage(props) {
   const {favorite, onLoadFavoriteData, storeName} = props;
+
+  const store = favorite[storeName];
 
   const fetchData = useCallback(async () => {
     await onLoadFavoriteData(storeName);
@@ -28,27 +31,30 @@ function FavoritePage(props) {
 
   // 当收藏项更新时会触发
   useEffect(() => {
-    DeviceEventEmitter.addListener(Type.FAVORITE_FAVORITE_CHANGE, () => {
-      fetchData();
-    });
+    EventBus.getInstance().addListener(
+      Type.FAVORITE_FAVORITE_CHANGE,
+      fetchData,
+    );
+    EventBus.getInstance().addListener(
+      Type.FAVORITE_TRENDING_CHANGE,
+      fetchData,
+    );
     return () => {
-      DeviceEventEmitter.removeListener(Type.FAVORITE_FAVORITE_CHANGE);
+      EventBus.getInstance().removeListener(fetchData);
     };
   }, [fetchData]);
 
   // 当跳转到收藏页时会触发
   useEffect(() => {
-    DeviceEventEmitter.addListener(Type.FAVORITE_DATA_REFRESH, () => {
-      fetchData();
-    });
+    EventBus.getInstance().addListener(Type.FAVORITE_DATA_REFRESH, fetchData);
     return () => {
-      DeviceEventEmitter.removeListener(Type.FAVORITE_DATA_REFRESH);
+      EventBus.getInstance().removeListener(fetchData);
     };
-  }, [fetchData]);
+  }, [fetchData, storeName]);
 
   return (
     <FlatList
-      data={favorite[storeName].items}
+      data={store.items}
       renderItem={(params) =>
         storeName === FavoriteStore.FAVORITE_HOT ? (
           <PopularItem
@@ -74,7 +80,7 @@ function FavoritePage(props) {
           title="Loading"
           titleColor="red"
           tintColor="orange"
-          refreshing={favorite[storeName].isLoading}
+          refreshing={store.isLoading}
           onRefresh={() => fetchData()}
         />
       }

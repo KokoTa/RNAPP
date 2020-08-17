@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-15 15:46:16
+ * @LastEditTime: 2020-08-15 17:39:13
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -27,6 +27,7 @@ const Type = {
   FAVORITE_LOAD_SUCCESS: 'FAVORITE_LOAD_SUCCESS',
   FAVORITE_LOAD_FAIL: 'FAVORITE_LOAD_FAIL',
   FAVORITE_FAVORITE_CHANGE: 'FAVORITE_FAVORITE_CHANGE',
+  FAVORITE_TRENDING_CHANGE: 'FAVORITE_TRENDING_CHANGE',
   FAVORITE_DATA_REFRESH: 'FAVORITE_DATA_REFRESH',
 };
 
