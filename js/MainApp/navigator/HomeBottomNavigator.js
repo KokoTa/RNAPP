@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:19:04
- * @LastEditTime: 2020-08-15 14:51:21
+ * @LastEditTime: 2020-08-17 11:31:11
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/HomeBottomNavigator.js
@@ -14,6 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import TrendingPage from '../page/TrendingPage';
 import FavoriteNavigator from './FavoriteNavigator';
+import MyPage from '../page/MyPage';
 
 const HomeBottomNavigator = createBottomTabNavigator({
   PopularPage: {
@@ -37,6 +38,14 @@ const HomeBottomNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({tintColor}) => {
         return <MaterialIcons name="favorite" size={26} color={tintColor} />;
+      },
+    },
+  },
+  MyPage: {
+    screen: MyPage,
+    navigationOptions: {
+      tabBarIcon: ({tintColor}) => {
+        return <MaterialIcons name="person" size={26} color={tintColor} />;
       },
     },
   },
