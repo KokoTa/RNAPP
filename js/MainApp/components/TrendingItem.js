@@ -1,20 +1,13 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-11 14:12:11
- * @LastEditTime: 2020-08-15 17:49:24
+ * @LastEditTime: 2020-08-17 10:47:31
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/TrendingItem.js
  */
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  DeviceEventEmitter,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {FavoriteStore} from '../../utils/FavoriteStore';
 import {connect} from 'react-redux';
 import actions from '../action';

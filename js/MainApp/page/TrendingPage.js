@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useState, useRef} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import {
   RefreshControl,
@@ -19,7 +19,7 @@ import EventBus from '../../utils/EventBus';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-15 17:47:02
+ * @LastEditTime: 2020-08-17 10:45:55
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js
