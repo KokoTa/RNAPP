@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 13:01:40
- * @LastEditTime: 2020-08-17 14:07:46
+ * @LastEditTime: 2020-08-17 15:40:48
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/MenuItem.js
@@ -24,7 +24,7 @@ export default function MenuItem(props) {
   return (
     <TouchableOpacity
       onPress={() => {
-        callBack();
+        callBack(text);
       }}
       style={{...styles.item, height}}>
       {/* 左侧 icon 和名字 */}

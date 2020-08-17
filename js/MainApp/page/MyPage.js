@@ -1,25 +1,44 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 11:25:42
- * @LastEditTime: 2020-08-17 14:17:39
+ * @LastEditTime: 2020-08-17 16:12:29
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/MyPage.js
  */
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 import {connect} from 'react-redux';
 import {ScrollView} from 'react-native-gesture-handler';
 import {menuConfig} from '../config/menuConfig';
 import {globalStyle} from '../common/globalStyle';
 import MenuItem from '../components/MenuItem';
+import NavigationStore from '../../utils/NavigationStore';
 
 function MyPage(props) {
   const {theme} = props;
 
-  const handleMenuClick = (menuItem) => {
-    console.log(menuItem);
+  const handleMenuClick = (menuName) => {
+    let RouteName = '';
+    let params = {
+      title: '',
+      url: '',
+    };
+
+    switch (menuName) {
+      case menuConfig.Tutorial.text:
+        RouteName = 'WebviewPage';
+        params = {
+          title: '教程',
+          url: 'http://www.baidu.com',
+        };
+        break;
+    }
+
+    if (RouteName) {
+      NavigationStore.navigation.navigate(RouteName, params);
+    }
   };
 
   return (
@@ -31,65 +50,65 @@ function MyPage(props) {
           height={90}
           size={40}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.Tutorial}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         {/* 趋势管理 */}
         <Text style={styles.groupTitle}>趋势管理</Text>
         <MenuItem
           {...menuConfig.Custom_Language}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.Sort_Language}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         {/* 最热管理 */}
         <Text style={styles.groupTitle}>最热管理</Text>
         <MenuItem
           {...menuConfig.Custom_Key}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.Sort_Key}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.Remove_Key}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         {/* 设置 */}
         <Text style={styles.groupTitle}>设置</Text>
         <MenuItem
           {...menuConfig.Custom_Theme}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.About_Author}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
         {/* 反馈 */}
         <Text style={styles.groupTitle}>设置</Text>
         <MenuItem
           {...menuConfig.Feedback}
           color={theme.themeColor}
-          callBack={() => handleMenuClick(menuConfig.About)}
+          callBack={(menuName) => handleMenuClick(menuName)}
         />
       </ScrollView>
     </View>
