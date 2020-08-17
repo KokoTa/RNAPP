@@ -2,11 +2,12 @@ import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 14:22:01
- * @LastEditTime: 2020-08-14 17:44:39
+ * @LastEditTime: 2020-08-17 20:59:48
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationComponents.js
@@ -19,7 +20,7 @@ export default class NavigationComponents {
   static getLeftBackButton(callback) {
     return (
       <TouchableOpacity
-        style={{padding: 8, paddingLeft: 21}}
+        style={{padding: 8, paddingLeft: 10}}
         onPress={callback}>
         <Ionicons name="ios-arrow-back" size={26} style={{color: 'white'}} />
       </TouchableOpacity>
@@ -32,9 +33,9 @@ export default class NavigationComponents {
   static getShareButton(callback) {
     return (
       <TouchableOpacity onPress={() => {}}>
-        <View style={{paddingHorizontal: 8}}>
-          <FontAwesome
-            name="share"
+        <View style={{paddingHorizontal: 5, paddingRight: 10}}>
+          <AntDesign
+            name="sharealt"
             size={24}
             style={{
               alignItems: 'center',
@@ -54,7 +55,7 @@ export default class NavigationComponents {
   static getStarButton(isFavorite, toggle, color) {
     return (
       <TouchableOpacity
-        style={{paddingHorizontal: 8}}
+        style={{paddingHorizontal: 5}}
         onPress={() => toggle(!isFavorite)}>
         <FontAwesome
           name={isFavorite ? 'star' : 'star-o'}

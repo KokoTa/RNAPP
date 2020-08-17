@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 12:23:29
- * @LastEditTime: 2020-08-17 14:12:20
+ * @LastEditTime: 2020-08-17 19:54:52
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/common/globalStyle.js
@@ -19,4 +19,5 @@ export const globalStyle = {
     fontSize: 12,
     color: 'gray',
   },
+  backgroundColor: '#f3f3f4',
 };

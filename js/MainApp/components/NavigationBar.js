@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 10:01:57
- * @LastEditTime: 2020-08-12 15:03:37
+ * @LastEditTime: 2020-08-17 20:05:46
  * @LastEditors: KokoTa
  * @Description: 自定义导航栏
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationBar.js
@@ -19,8 +19,8 @@ import {
 } from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 
-const IOS_NAV_BAR_HEIGHT = 44;
-const ANDROID_NAV_BAR_HEIGHT = 44;
+export const IOS_NAV_BAR_HEIGHT = 44;
+export const ANDROID_NAV_BAR_HEIGHT = 50;
 
 // 按钮容器
 function getButtonElement(button) {

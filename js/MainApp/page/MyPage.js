@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 11:25:42
- * @LastEditTime: 2020-08-17 16:12:29
+ * @LastEditTime: 2020-08-17 19:51:03
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/MyPage.js
@@ -27,6 +27,9 @@ function MyPage(props) {
     };
 
     switch (menuName) {
+      case menuConfig.About.text:
+        RouteName = 'AboutPage';
+        break;
       case menuConfig.Tutorial.text:
         RouteName = 'WebviewPage';
         params = {
