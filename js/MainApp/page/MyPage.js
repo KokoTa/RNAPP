@@ -1,13 +1,13 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 11:25:42
- * @LastEditTime: 2020-08-17 19:51:03
+ * @LastEditTime: 2020-08-18 10:33:23
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/MyPage.js
  */
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Linking} from 'react-native';
 import NavigationBar from '../components/NavigationBar';
 import {connect} from 'react-redux';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -19,7 +19,7 @@ import NavigationStore from '../../utils/NavigationStore';
 function MyPage(props) {
   const {theme} = props;
 
-  const handleMenuClick = (menuName) => {
+  const handleMenuClick = async (menuName) => {
     let RouteName = '';
     let params = {
       title: '',
@@ -36,6 +36,18 @@ function MyPage(props) {
           title: '教程',
           url: 'http://www.baidu.com',
         };
+        break;
+      case menuConfig.Feedback.text:
+        const url = 'mailto://584847514@qq.com';
+        try {
+          const support = await Linking.canOpenURL(url);
+          if (!support) {
+            throw Error("can't handle url");
+          }
+          Linking.openURL(url);
+        } catch (error) {
+          console.log(error);
+        }
         break;
     }
 

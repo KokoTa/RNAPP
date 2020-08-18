@@ -1,12 +1,12 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 19:35:31
- * @LastEditTime: 2020-08-18 09:36:46
+ * @LastEditTime: 2020-08-18 11:28:59
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/AboutPage.js
  */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Image,
@@ -27,8 +27,10 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import NavigatorComponents from '../components/NavigationComponents';
 import NavigationStore from '../../utils/NavigationStore';
 import NavigationComponents from '../components/NavigationComponents';
-import MenuItem from '../components/MenuItem';
 import {menuConfig} from '../config/menuConfig';
+import MenuItemGroup from '../components/MenuItemGroup';
+import Toast from 'react-native-root-toast';
+import Clipboard from '@react-native-community/clipboard';
 
 const AVATAR_SIZE = 90; // 头像大小
 const PARALLAX_HEADER_HEIGHT = 270; // Prallax 区域高度
@@ -38,8 +40,7 @@ const STICKY_HEADER_HEIGHT =
 function AboutPage(props) {
   const {theme, navigation} = props;
   const window = Dimensions.get('window');
-
-  const handleMenuClick = () => {};
+  const [show, setShow] = useState(false);
 
   return (
     <View style={{flex: 1}}>
@@ -108,22 +109,38 @@ function AboutPage(props) {
             {NavigationComponents.getShareButton(() => {})}
           </View>
         )}>
-        <MenuItem
-          {...menuConfig.Tutorial}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
-        />
-        <View style={styles.line} />
-        <MenuItem
-          {...menuConfig.About_Author}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
-        />
-        <View style={styles.line} />
-        <MenuItem
-          {...menuConfig.Feedback}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
+        {/* 菜单项组，可折叠 */}
+        <MenuItemGroup
+          titleConfig={menuConfig.About_Author}
+          isShow={show}
+          children={[
+            {
+              text: 'Phone',
+              account: '12312312312',
+            },
+            {
+              text: 'Email',
+              account: '584847514@qq.com',
+            },
+          ]}
+          callBack={(type, data) => {
+            if (type === 'title') {
+              setShow(data);
+            } else {
+              if (data.text === 'Phone') {
+                Clipboard.setString(data.account);
+                Toast.show('号码已复制到剪贴板', {
+                  position: Toast.positions.CENTER,
+                });
+              }
+              if (data.text === 'Email') {
+                Clipboard.setString(data.account);
+                Toast.show('邮箱已复制到剪贴板', {
+                  position: Toast.positions.CENTER,
+                });
+              }
+            }
+          }}
         />
       </ParallaxScrollView>
     </View>
