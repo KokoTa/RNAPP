@@ -1,7 +1,7 @@
 <!--
  * @Author: KokoTa
  * @Date: 2020-07-21 09:01:10
- * @LastEditTime: 2020-08-17 11:12:53
+ * @LastEditTime: 2020-08-18 20:33:13
  * @LastEditors: KokoTa
  * @Description: 
  * @FilePath: /AwesomeProject/README.md
@@ -15,3 +15,4 @@
 5. `fetch` 返回错误的 http 码时不会 reject，而是 resolve 但 ok 属性设为了 false。`axios` 只要 http 不是 200 就会 reject
 6. `PopularItem` 的 star 点击没有渐变效果是因为渲染速度跟不上数据变化速度
 7. 不要用随机数来赋值列表项的 key
+8. 更好的 Debugger 插件: [react-native-debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md)
