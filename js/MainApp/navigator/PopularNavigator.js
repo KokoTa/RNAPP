@@ -1,15 +1,14 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-17 11:03:52
+ * @LastEditTime: 2020-08-18 09:55:33
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
  */
-import React from 'react';
+import React, {Component} from 'react';
 import PopularPage from '../page/PopularPage';
 import NavigationBar from '../components/NavigationBar';
-import {createAppContainer} from 'react-navigation';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import {connect} from 'react-redux';
 import NavigationStore from '../../utils/NavigationStore';
@@ -47,23 +46,23 @@ const createTabs = (list) => {
   return tabs;
 };
 
-const PopularNavigator = createAppContainer(
-  createMaterialTopTabNavigator(createTabs(tabList), {
-    tabBarOptions: {
-      upperCaseLabel: false,
-      scrollEnabled: true,
-    },
-  }),
-);
+const PopularNavigator = createMaterialTopTabNavigator(createTabs(tabList), {
+  tabBarOptions: {
+    upperCaseLabel: false,
+    scrollEnabled: true,
+  },
+});
 
-export default (props) => {
-  const {navigation} = props;
-  // 储存第一个 createAppContainer 的 navigation
-  NavigationStore.setNavigation(navigation);
-  return (
-    <>
-      <ConnectNavigationBar />
-      <PopularNavigator />
-    </>
-  );
-};
+// 由于 navigation 4.x 不支持函数的赋值方式，所以用 class 来解决
+export default class PopularNavigatorWrap extends Component {
+  static router = PopularNavigator.router;
+  render() {
+    NavigationStore.setNavigation(this.props.navigation);
+    return (
+      <>
+        <ConnectNavigationBar />
+        <PopularNavigator navigation={this.props.navigation} />
+      </>
+    );
+  }
+}

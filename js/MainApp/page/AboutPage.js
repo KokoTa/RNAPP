@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 19:35:31
- * @LastEditTime: 2020-08-17 20:56:33
+ * @LastEditTime: 2020-08-18 09:36:46
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/AboutPage.js
@@ -27,6 +27,8 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import NavigatorComponents from '../components/NavigationComponents';
 import NavigationStore from '../../utils/NavigationStore';
 import NavigationComponents from '../components/NavigationComponents';
+import MenuItem from '../components/MenuItem';
+import {menuConfig} from '../config/menuConfig';
 
 const AVATAR_SIZE = 90; // 头像大小
 const PARALLAX_HEADER_HEIGHT = 270; // Prallax 区域高度
@@ -36,6 +38,8 @@ const STICKY_HEADER_HEIGHT =
 function AboutPage(props) {
   const {theme, navigation} = props;
   const window = Dimensions.get('window');
+
+  const handleMenuClick = () => {};
 
   return (
     <View style={{flex: 1}}>
@@ -103,8 +107,25 @@ function AboutPage(props) {
             })}
             {NavigationComponents.getShareButton(() => {})}
           </View>
-        )}
-      />
+        )}>
+        <MenuItem
+          {...menuConfig.Tutorial}
+          color={theme.themeColor}
+          callBack={(menuName) => handleMenuClick(menuName)}
+        />
+        <View style={styles.line} />
+        <MenuItem
+          {...menuConfig.About_Author}
+          color={theme.themeColor}
+          callBack={(menuName) => handleMenuClick(menuName)}
+        />
+        <View style={styles.line} />
+        <MenuItem
+          {...menuConfig.Feedback}
+          color={theme.themeColor}
+          callBack={(menuName) => handleMenuClick(menuName)}
+        />
+      </ParallaxScrollView>
     </View>
   );
 }
@@ -150,6 +171,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  line: globalStyle.line,
 });
 
 const mapStateToProps = (state) => ({
