@@ -19,7 +19,7 @@ import EventBus from '../../utils/EventBus';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 15:29:12
- * @LastEditTime: 2020-08-17 10:45:55
+ * @LastEditTime: 2020-08-19 15:51:35
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/TrendingPage.js
@@ -46,10 +46,12 @@ function TrendingPage(props) {
       Type.DEVICE_EMIT_TIME_SPAN_CHANGE,
       (span) => {
         setTimeSpan(span);
-        loadTotalData();
       },
     );
-  }, [loadTotalData]);
+    return () => {
+      DeviceEventEmitter.removeAllListeners(Type.DEVICE_EMIT_TIME_SPAN_CHANGE);
+    };
+  }, []);
 
   // 收藏页状态改变后这里会监听到
   useEffect(() => {
