@@ -1,0 +1,32 @@
+{
+  "language": [
+    {
+      "name": "javascript",
+      "checked": true
+    },
+    {
+      "name": "node",
+      "checked": true
+    },
+    {
+      "name": "react native",
+      "checked": true
+    },
+    {
+      "name": "python",
+      "checked": true
+    },
+    {
+      "name": "java",
+      "checked": true
+    },
+    {
+      "name": "c++",
+      "checked": true
+    },
+    {
+      "name": "rust",
+      "checked": true
+    }
+  ]
+}
