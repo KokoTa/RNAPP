@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-19 19:37:22
- * @LastEditTime: 2020-08-20 14:39:09
+ * @LastEditTime: 2020-08-20 15:13:36
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/SortKeyPage.js
@@ -48,7 +48,7 @@ function SortKeyPage(props) {
   return (
     <>
       <NavigationBar
-        title="自定义语言"
+        title="语言排序"
         statusBar={{
           backgroundColor: theme.themeColor,
         }}

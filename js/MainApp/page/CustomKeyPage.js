@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-19 19:37:22
- * @LastEditTime: 2020-08-20 10:34:10
+ * @LastEditTime: 2020-08-20 16:03:08
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/CustomKeyPage.js
@@ -84,7 +84,14 @@ function CustomKeyPage(props) {
             style={styles.item}
             onPress={() => handleCheckBox(item, index)}>
             <Text style={styles.text}>{item.name}</Text>
-            <CheckBox style={styles.checkbox} value={item.checked} />
+            <CheckBox
+              style={{...styles.checkbox}}
+              tintColor={theme.themeColor} // ios 未选中圈圈颜色
+              onCheckColor={theme.themeColor} // ios 选中时勾勾颜色
+              onTintColor={theme.themeColor} // ios 选中时圈圈颜色
+              tintColors={{true: theme.themeColor, false: theme.themeColor}} // android
+              value={item.checked}
+            />
           </TouchableOpacity>
         ))}
       </ScrollView>

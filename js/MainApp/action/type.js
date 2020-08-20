@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-19 09:39:25
+ * @LastEditTime: 2020-08-20 15:02:06
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -31,6 +31,9 @@ const Type = {
   FAVORITE_DATA_REFRESH: 'FAVORITE_DATA_REFRESH',
   // 语言标签
   LANGUAGE_TABS_LOAD_SUCCESS: 'LANGUAGE_TABS_LOAD_SUCCESS',
+  // 改变主题色
+  THEME_COLOR_LOAD: 'THEME_COLOR_LOAD',
+  THEME_COLOR_CHANGE: 'THEME_COLOR_CHANGE',
 };
 
 export default Type;

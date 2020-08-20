@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-18 09:55:50
+ * @LastEditTime: 2020-08-20 15:40:36
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/FavoriteNavigator.js
@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import NavigationStore from '../../utils/NavigationStore';
 import FavoritePage from '../page/FavoritePage';
 import {FavoriteStore} from '../../utils/FavoriteStore';
+import {createAppContainer} from 'react-navigation';
 const tabList = [
   {
     name: '最热',
@@ -45,33 +46,39 @@ const mapStateToProps = (state) => ({
 });
 const ConnectNavigationBar = connect(mapStateToProps)(CustomNavigationBar);
 
-// 构造顶部 tab 结构数据
-const createTabs = (list) => {
-  let tabs = {};
-  list.forEach((tab) => {
-    tabs[tab.name] = {
-      screen: (props) => <FavoritePage {...props} storeName={tab.value} />,
-    };
-  });
-  return tabs;
+const FavoriteNavigatorWrap = (props) => {
+  const {theme} = props;
+
+  // 构造顶部 tab 结构数据
+  const createTabs = (list) => {
+    let tabs = {};
+    list.forEach((tab) => {
+      tabs[tab.name] = {
+        screen: (params) => <FavoritePage {...params} storeName={tab.value} />,
+      };
+    });
+    return tabs;
+  };
+
+  const FavoriteNavigator = createAppContainer(
+    createMaterialTopTabNavigator(createTabs(tabList), {
+      tabBarOptions: {
+        upperCaseLabel: false,
+        style: {
+          backgroundColor: theme.themeColor,
+        },
+      },
+    }),
+  );
+
+  return (
+    <>
+      <ConnectNavigationBar />
+      <FavoriteNavigator />
+    </>
+  );
 };
 
-const FavoriteNavigator = createMaterialTopTabNavigator(createTabs(tabList), {
-  tabBarOptions: {
-    upperCaseLabel: false,
-  },
-});
-
-// 由于 navigation 4.x 不支持函数的赋值方式，所以用 class 来解决
-export default class FavoriteNavigatorWrap extends Component {
-  static router = FavoriteNavigator.router;
-  render() {
-    NavigationStore.setNavigation(this.props.navigation);
-    return (
-      <>
-        <ConnectNavigationBar />
-        <FavoriteNavigator navigation={this.props.navigation} />
-      </>
-    );
-  }
-}
+export default connect((state) => ({
+  theme: state.theme,
+}))(FavoriteNavigatorWrap);

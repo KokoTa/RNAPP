@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-20 10:58:48
+ * @LastEditTime: 2020-08-20 16:09:46
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
@@ -11,7 +11,6 @@ import PopularPage from '../page/PopularPage';
 import NavigationBar from '../components/NavigationBar';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import {connect} from 'react-redux';
-import NavigationStore from '../../utils/NavigationStore';
 import actions from '../action';
 import {createAppContainer} from 'react-navigation';
 
@@ -65,12 +64,7 @@ const createTabs = (list = [{name: 'js', checked: true}]) => {
 // }
 
 const PopularNavigatorWrap = (props) => {
-  const {navigation, language, onLoadLanguage} = props;
-
-  useEffect(() => {
-    // 存储第一个 createAppContainer 的 navigation
-    NavigationStore.setNavigation(navigation);
-  }, [navigation]);
+  const {theme, language, onLoadLanguage} = props;
 
   useEffect(() => {
     onLoadLanguage();
@@ -83,6 +77,9 @@ const PopularNavigatorWrap = (props) => {
             tabBarOptions: {
               upperCaseLabel: false,
               scrollEnabled: true,
+              style: {
+                backgroundColor: theme.themeColor,
+              },
             },
             lazy: true,
           }),
@@ -99,6 +96,7 @@ const PopularNavigatorWrap = (props) => {
 
 export default connect(
   (state) => ({
+    theme: state.theme,
     language: state.language,
   }),
   (dispatch) => ({
