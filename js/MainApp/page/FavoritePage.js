@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-15 11:01:44
- * @LastEditTime: 2020-08-17 09:51:38
+ * @LastEditTime: 2020-08-20 10:47:34
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/FavoritePage.js
@@ -50,7 +50,7 @@ function FavoritePage(props) {
     return () => {
       EventBus.getInstance().removeListener(fetchData);
     };
-  }, [fetchData, storeName]);
+  }, [fetchData]);
 
   return (
     <FlatList

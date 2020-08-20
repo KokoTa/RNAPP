@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-15 17:05:10
+ * @LastEditTime: 2020-08-20 11:23:33
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/App.js
@@ -18,9 +18,12 @@ export default function App() {
     <Provider store={store}>
       <AppNavigator
         onNavigationStateChange={(prevState, currentState) => {
+          const prevIndex = prevState.routes[0].index;
+          const currentIndex = currentState.routes[0].index;
           // 如果跳转到收藏页，就触发该页的数据更新
-          const index = currentState.routes[0].index;
-          if (index === 2) {
+          // 收藏页顶部 tab 切换会触发该钩子，但最热页不会，原因见 README
+          // console.log(currentState);
+          if (currentIndex === 2 && prevIndex !== currentIndex) {
             EventBus.getInstance().fireEvent(Type.FAVORITE_DATA_REFRESH);
           }
         }}

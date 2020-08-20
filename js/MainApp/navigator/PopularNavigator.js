@@ -1,12 +1,12 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-20 10:43:45
+ * @LastEditTime: 2020-08-20 10:58:48
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
  */
-import React, {Component, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PopularPage from '../page/PopularPage';
 import NavigationBar from '../components/NavigationBar';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
@@ -14,7 +14,6 @@ import {connect} from 'react-redux';
 import NavigationStore from '../../utils/NavigationStore';
 import actions from '../action';
 import {createAppContainer} from 'react-navigation';
-import {View} from 'react-native';
 
 // 自定义导航栏
 const CustomNavigationBar = (props) => {
