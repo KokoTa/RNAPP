@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 11:25:42
- * @LastEditTime: 2020-08-19 20:49:12
+ * @LastEditTime: 2020-08-20 12:04:33
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/MyPage.js
@@ -39,6 +39,9 @@ function MyPage(props) {
         break;
       case menuConfig.Custom_Language.text:
         RouteName = 'CustomKeyPage';
+        break;
+      case menuConfig.Sort_Language.text:
+        RouteName = 'SortKeyPage';
         break;
       case menuConfig.Feedback.text:
         const url = 'mailto://584847514@qq.com';
