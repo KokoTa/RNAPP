@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-17 19:41:50
+ * @LastEditTime: 2020-08-19 19:59:07
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/AppNavigator.js
@@ -10,6 +10,7 @@ import HomeBottomNavigator from './HomeBottomNavigator';
 import DetailPage from '../page/DetailPage';
 import WebviewPage from '../page/WebviewPage';
 import AboutPage from '../page/AboutPage';
+import CustomKeyPage from '../page/CustomKeyPage';
 const {createAppContainer} = require('react-navigation');
 const {createStackNavigator} = require('react-navigation-stack');
 
@@ -26,6 +27,9 @@ const stackNavigator = createStackNavigator(
     },
     AboutPage: {
       screen: AboutPage,
+    },
+    CustomKeyPage: {
+      screen: CustomKeyPage,
     },
   },
   {

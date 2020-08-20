@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-17 11:25:42
- * @LastEditTime: 2020-08-18 10:33:23
+ * @LastEditTime: 2020-08-19 20:49:12
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/page/MyPage.js
@@ -37,6 +37,9 @@ function MyPage(props) {
           url: 'http://www.baidu.com',
         };
         break;
+      case menuConfig.Custom_Language.text:
+        RouteName = 'CustomKeyPage';
+        break;
       case menuConfig.Feedback.text:
         const url = 'mailto://584847514@qq.com';
         try {
@@ -52,6 +55,7 @@ function MyPage(props) {
     }
 
     if (RouteName) {
+      console.log(RouteName);
       NavigationStore.navigation.navigate(RouteName, params);
     }
   };
@@ -83,25 +87,6 @@ function MyPage(props) {
         <View style={styles.line} />
         <MenuItem
           {...menuConfig.Sort_Language}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
-        />
-        {/* 最热管理 */}
-        <Text style={styles.groupTitle}>最热管理</Text>
-        <MenuItem
-          {...menuConfig.Custom_Key}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
-        />
-        <View style={styles.line} />
-        <MenuItem
-          {...menuConfig.Sort_Key}
-          color={theme.themeColor}
-          callBack={(menuName) => handleMenuClick(menuName)}
-        />
-        <View style={styles.line} />
-        <MenuItem
-          {...menuConfig.Remove_Key}
           color={theme.themeColor}
           callBack={(menuName) => handleMenuClick(menuName)}
         />

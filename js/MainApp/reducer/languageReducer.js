@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-19 09:36:12
- * @LastEditTime: 2020-08-19 10:10:14
+ * @LastEditTime: 2020-08-20 10:24:24
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/reducer/languageReducer.js

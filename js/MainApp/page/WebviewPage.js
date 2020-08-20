@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 11:53:09
- * @LastEditTime: 2020-08-17 16:13:07
+ * @LastEditTime: 2020-08-19 20:02:21
  * @LastEditors: KokoTa
  * @Description: DetailPage 的简化版
  * @FilePath: /AwesomeProject/js/MainApp/page/WebviewPage.js
@@ -14,7 +14,7 @@ import NavigationComponents from '../components/NavigationComponents';
 import useHandleBack from '../hook/useHandleBack';
 import action from '../action';
 
-function DetailPage(props) {
+function WebviewPage(props) {
   const {theme, navigation} = props;
   const {url, title} = navigation.state.params;
   const [navState, setNavState] = useState(null);
@@ -70,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action.onChangePopularFavorite(storeName, item, isFavorite)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);
+export default connect(mapStateToProps, mapDispatchToProps)(WebviewPage);

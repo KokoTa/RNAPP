@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-19 09:38:44
- * @LastEditTime: 2020-08-19 14:46:11
+ * @LastEditTime: 2020-08-20 10:36:10
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/language.js

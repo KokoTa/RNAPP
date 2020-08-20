@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-19 15:10:09
+ * @LastEditTime: 2020-08-20 10:35:28
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
@@ -78,9 +78,9 @@ const PopularNavigatorWrap = (props) => {
   }, [onLoadLanguage]);
 
   const PopularNavigator =
-    language && language.language
+    language && language.length
       ? createAppContainer(
-          createMaterialTopTabNavigator(createTabs(language.language), {
+          createMaterialTopTabNavigator(createTabs(language), {
             tabBarOptions: {
               upperCaseLabel: false,
               scrollEnabled: true,

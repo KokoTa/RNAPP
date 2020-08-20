@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 14:22:01
- * @LastEditTime: 2020-08-17 20:59:48
+ * @LastEditTime: 2020-08-19 20:56:10
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationComponents.js
@@ -62,6 +62,26 @@ export default class NavigationComponents {
           size={26}
           style={{color: color ? color : 'white'}}
         />
+      </TouchableOpacity>
+    );
+  }
+  /**
+   * 保存按钮
+   */
+  static getSaveButton(callback) {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          callback();
+        }}>
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 18,
+            marginRight: 10,
+          }}>
+          保存
+        </Text>
       </TouchableOpacity>
     );
   }

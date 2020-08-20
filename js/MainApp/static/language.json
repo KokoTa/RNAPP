@@ -1,7 +1,19 @@
 {
   "language": [
     {
+      "name": "html",
+      "checked": true
+    },
+    {
+      "name": "css",
+      "checked": true
+    },
+    {
       "name": "javascript",
+      "checked": true
+    },
+    {
+      "name": "typescript",
       "checked": true
     },
     {
@@ -9,24 +21,60 @@
       "checked": true
     },
     {
+      "name": "react",
+      "checked": false
+    },
+    {
       "name": "react native",
-      "checked": true
+      "checked": false
+    },
+    {
+      "name": "vue",
+      "checked": false
+    },
+    {
+      "name": "dart",
+      "checked": false
     },
     {
       "name": "python",
-      "checked": true
+      "checked": false
     },
     {
       "name": "java",
-      "checked": true
+      "checked": false
     },
     {
       "name": "c++",
-      "checked": true
+      "checked": false
+    },
+    {
+      "name": "golang",
+      "checked": false
+    },
+    {
+      "name": "lua",
+      "checked": false
+    },
+    {
+      "name": "c#",
+      "checked": false
+    },
+    {
+      "name": "php",
+      "checked": false
+    },
+    {
+      "name": "kotlin",
+      "checked": false
     },
     {
       "name": "rust",
-      "checked": true
+      "checked": false
+    },
+    {
+      "name": "other",
+      "checked": false
     }
   ]
 }
