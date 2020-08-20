@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-20 10:35:28
+ * @LastEditTime: 2020-08-20 10:43:45
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
@@ -85,6 +85,7 @@ const PopularNavigatorWrap = (props) => {
               upperCaseLabel: false,
               scrollEnabled: true,
             },
+            lazy: true,
           }),
         )
       : () => null;
