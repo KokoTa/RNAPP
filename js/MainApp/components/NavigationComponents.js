@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-13 14:22:01
- * @LastEditTime: 2020-08-19 20:56:10
+ * @LastEditTime: 2020-08-24 11:20:44
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationComponents.js
@@ -82,6 +82,18 @@ export default class NavigationComponents {
           }}>
           保存
         </Text>
+      </TouchableOpacity>
+    );
+  }
+  /**
+   * 搜索
+   */
+  static getSearchButton(callback) {
+    return (
+      <TouchableOpacity
+        style={{paddingHorizontal: 5, paddingRight: 10}}
+        onPress={() => callback()}>
+        <Ionicons name="search" size={26} style={{color: 'white'}} />
       </TouchableOpacity>
     );
   }

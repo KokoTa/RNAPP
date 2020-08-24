@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-19 09:46:50
+ * @LastEditTime: 2020-08-24 10:10:10
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/reducer/index.js
@@ -12,6 +12,7 @@ import themeReducer from './themeReducer';
 import trendingReducer from './trendingReducer';
 import favoriteReducer from './favoriteReducer';
 import languageReducer from './languageReducer';
+import searchReducer from './searchReducer';
 
 export default combineReducers({
   popular: popularReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   trending: trendingReducer,
   favorite: favoriteReducer,
   language: languageReducer,
+  search: searchReducer,
 });

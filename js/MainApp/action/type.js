@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-20 15:02:06
+ * @LastEditTime: 2020-08-24 09:58:44
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/type.js
@@ -34,6 +34,10 @@ const Type = {
   // 改变主题色
   THEME_COLOR_LOAD: 'THEME_COLOR_LOAD',
   THEME_COLOR_CHANGE: 'THEME_COLOR_CHANGE',
+  // 搜索模块
+  SEARCH_REFRESH: 'SEARCH_REFRESH',
+  SEARCH_REFRESH_FAIL: 'SEARCH_REFRESH_FAIL',
+  SEARCH_REFRESH_SUCCESS: 'SEARCH_REFRESH_SUCCESS',
 };
 
 export default Type;

@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 10:01:57
- * @LastEditTime: 2020-08-17 20:05:46
+ * @LastEditTime: 2020-08-24 11:19:53
  * @LastEditors: KokoTa
  * @Description: 自定义导航栏
  * @FilePath: /AwesomeProject/js/MainApp/components/NavigationBar.js
@@ -24,7 +24,7 @@ export const ANDROID_NAV_BAR_HEIGHT = 50;
 
 // 按钮容器
 function getButtonElement(button) {
-  return button ? <View style={styles.navBarButton}>{button}</View> : null;
+  return button ? <View style={styles.navBarButton}>{button}</View> : <View />;
 }
 
 export default function NavigationBar(props) {

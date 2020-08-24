@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 /*
  * @Author: KokoTa
  * @Date: 2020-08-18 20:41:17
- * @LastEditTime: 2020-08-20 15:20:28
+ * @LastEditTime: 2020-08-24 14:32:21
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/utils/LanguageStore.js

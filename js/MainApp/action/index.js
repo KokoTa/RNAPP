@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-12 12:18:22
- * @LastEditTime: 2020-08-20 15:14:42
+ * @LastEditTime: 2020-08-24 10:45:22
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/action/index.js
@@ -15,6 +15,7 @@ import {onChangeThemeColor, onLoadThemeColor} from './theme';
 import {onLoadTrendingData, onChangeTrendingFavorite} from './trending';
 import {onLoadFavoriteData} from './favorite';
 import {onLoadLanguage} from './language';
+import {onLoadSearchData, onSearchCancel} from './search';
 
 const actions = {
   onLoadPopularData,
@@ -26,6 +27,8 @@ const actions = {
   onChangeTrendingFavorite,
   onLoadFavoriteData,
   onLoadLanguage,
+  onLoadSearchData,
+  onSearchCancel,
 };
 
 export default actions;

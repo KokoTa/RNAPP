@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-20 15:30:30
+ * @LastEditTime: 2020-08-24 11:13:42
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/AppNavigator.js
@@ -13,6 +13,7 @@ import AboutPage from '../page/AboutPage';
 import CustomKeyPage from '../page/CustomKeyPage';
 import SortKeyPage from '../page/SortKeyPage';
 import ThemePage from '../page/ThemePage';
+import SearchPage from '../page/SearchPage';
 const {createAppContainer} = require('react-navigation');
 const {createStackNavigator} = require('react-navigation-stack');
 
@@ -38,6 +39,9 @@ const stackNavigator = createStackNavigator(
     },
     ThemePage: {
       screen: ThemePage,
+    },
+    SearchPage: {
+      screen: SearchPage,
     },
   },
   {

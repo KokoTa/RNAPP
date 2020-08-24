@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 20:22:02
- * @LastEditTime: 2020-08-20 16:09:46
+ * @LastEditTime: 2020-08-24 11:29:01
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/navigator/PopularNavigator.js
@@ -13,6 +13,8 @@ import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import {connect} from 'react-redux';
 import actions from '../action';
 import {createAppContainer} from 'react-navigation';
+import NavigationComponents from '../components/NavigationComponents';
+import NavigationStore from '../../utils/NavigationStore';
 
 // 自定义导航栏
 const CustomNavigationBar = (props) => {
@@ -26,6 +28,9 @@ const CustomNavigationBar = (props) => {
       style={{
         backgroundColor: theme.themeColor,
       }}
+      rightButton={NavigationComponents.getSearchButton(() => {
+        NavigationStore.navigation.navigate('SearchPage');
+      })}
     />
   );
 };
