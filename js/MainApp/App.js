@@ -1,7 +1,7 @@
 /*
  * @Author: KokoTa
  * @Date: 2020-08-10 17:30:16
- * @LastEditTime: 2020-08-31 14:18:48
+ * @LastEditTime: 2020-09-01 10:21:59
  * @LastEditors: KokoTa
  * @Description:
  * @FilePath: /AwesomeProject/js/MainApp/App.js
@@ -11,8 +11,9 @@ import {Provider} from 'react-redux';
 import AppNavigator from './navigator/AppNavigator';
 import store from './store';
 import RNBootSplash from 'react-native-bootsplash';
+import codePush from 'react-native-code-push';
 
-export default function App() {
+export default codePush(function App() {
   let init = async () => {
     // …do multiple async tasks
   };
@@ -28,4 +29,4 @@ export default function App() {
       <AppNavigator />
     </Provider>
   );
-}
+});

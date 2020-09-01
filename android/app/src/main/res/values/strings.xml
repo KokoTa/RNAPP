@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AwesomeProject</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">HW3gpYvEibRyQQOynp8xU_DzVJY8BldevgB23</string>
+    <string name="CodePushPublicKey">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCkyY71oUFeohdlv4BH4U+891p28+FHgqFLBx8jm6NhHpizeKZk90sXxQb2UYIhgcvFTCK6bVBFc1e+wzw0r3nyW2iO7xJr3RS9W3+3Td3foo3xN3lKG5ViU0rDHvt1xMKnesmGk3GVYiZaFYH+IWAO/Wt8hl7MNIXK1QZGFvA2nqIbBilruvJMZNxZSLlQYJUL9pY7YPyEEVunGvgFlCwhk6PukLgC6Yxnc7vw4+0lB+3RfcI5UGMQQRKOMY528hEvMMRT/Sjw60AJU9ddWKAiVuHseCQ5nZsRWkZ751usXdwmb6B4M8BVzZW0d89myg0n/J7Nc0GRRCbN8Hm1CI7xyMa2uzHNx4A0H3q6EMUq10F197P9tz28mD9BGOmck7uAf3abvUnhiRccO7vCt+pO58NQmMliAR4nfWxBOVHp61/dP822cpl/CRa8VQHE9gwySDq96vtGGj7F3DjY69UgJNI3zo3SJ5AfmD2ldEYtqvA/+tkbXS6sczU3sn/G93k= daixin@daixindeMacBook-Pro.local</string>
 </resources>

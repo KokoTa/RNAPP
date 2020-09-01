@@ -1,7 +1,7 @@
 <!--
  * @Author: KokoTa
  * @Date: 2020-07-21 09:01:10
- * @LastEditTime: 2020-09-01 09:36:06
+ * @LastEditTime: 2020-09-01 09:38:55
  * @LastEditors: KokoTa
  * @Description: 
  * @FilePath: /AwesomeProject/README.md
@@ -16,4 +16,5 @@
 6. 不要用随机数来赋值列表项的 key，性能极差
 7. [react-native-debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md)
 8. 关于 `yarn android` 报错问题：比如之前尝试接友盟的包，构建后发现报错，`yarn android` 并不会重新构建整个项目，而是在构建后的文件基础上再构建，这就导致了引用一些错误包后，构建的项目就废了，回不去了。此时要 idea -> build -> Clean Project -> Rebuild Project 解决，本质上就是删掉缓存重新构建的意思
-9. 打包工具：[CodePush](https://www.npmjs.com/package/code-push-cli) [react-native-code-push](https://github.com/microsoft/react-native-code-push) [react-native-code-push Android配置](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md)
+9. [react-native-bootsplash 启动图](https://github.com/zoontek/react-native-bootsplash)，IOS设置的图片如果没有全屏，记得用 XCode 全屏一下，安卓好像默认就是全屏的
+10. 打包工具：[CodePush 安装](https://www.npmjs.com/package/code-push-cli) -> [react-native-code-push 安装](https://github.com/microsoft/react-native-code-push) -> [react-native-code-push Android配置](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md)
